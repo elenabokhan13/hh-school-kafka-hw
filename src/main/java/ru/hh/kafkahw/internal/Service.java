@@ -1,10 +1,11 @@
 package ru.hh.kafkahw.internal;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.springframework.stereotype.Component;
 
 @Component
 public class Service {
@@ -19,7 +20,7 @@ public class Service {
     counters.computeIfAbsent(topic, key -> new ConcurrentHashMap<>())
         .computeIfAbsent(message, key -> new AtomicInteger(0)).incrementAndGet();
     if (random.nextInt(100) < 2) {
-      throw new RuntimeException();
+      throw new RuntimeException("Error after saving");
     }
   }
 
