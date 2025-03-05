@@ -1,10 +1,11 @@
 package ru.hh.kafkahw.internal;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.springframework.stereotype.Component;
 
 @Component
 public class Service {

@@ -58,26 +58,27 @@ class KafkaTest {
 
   @Test
   public void testAtLeastOnce() throws Exception {
-    Set<String> messages = IntStream.range(1, 101)
-        .mapToObj(i -> UUID.randomUUID().toString())
-        .collect(Collectors.toSet());
-    messages.forEach(message -> sender.doSomething("topic2", message));
-    Thread.sleep(5000);
-    messages.forEach(message -> {
-      assertTrue(1 <= service.count("topic2", message));
-    });
+      Set<String> messages = IntStream.range(1, 101)
+          .mapToObj(i -> UUID.randomUUID().toString())
+          .collect(Collectors.toSet());
+      messages.forEach(message -> sender.doSomething("topic2", message));
+      Thread.sleep(5000);
+      messages.forEach(message -> {
+        assertTrue(1 <= service.count("topic2", message));
+      });
   }
 
   @Test
   public void testExactlyOnce() throws Exception {
-    Set<String> messages = IntStream.range(1, 101)
-        .mapToObj(i -> UUID.randomUUID().toString())
-        .collect(Collectors.toSet());
-    messages.forEach(message -> sender.doSomething("topic3", message));
-    Thread.sleep(5000);
-    messages.forEach(message -> {
-      assertEquals(1, service.count("topic3", message));
-    });
+      Set<String> messages = IntStream.range(1, 101)
+          .mapToObj(i -> UUID.randomUUID().toString())
+          .collect(Collectors.toSet());
+      messages.forEach(message -> sender.doSomething("topic3", message));
+      Thread.sleep(5000);
+      messages.forEach(message -> {
+        assertEquals(1, service.count("topic3", message));
+      });
+
   }
 
   @TestConfiguration

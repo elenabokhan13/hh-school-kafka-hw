@@ -14,9 +14,13 @@ public class Sender {
   }
 
   public void doSomething(String topic, String message) {
-    try {
-      producer.send(topic, message);
-    } catch (Exception ignore) {
+    for (int i = 0; i < 10; i++) {
+      try {
+        producer.send(topic, message);
+        i = 10;
+      } catch (Exception ignore) {
+      }
     }
+
   }
 }
