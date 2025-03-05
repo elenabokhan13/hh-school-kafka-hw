@@ -19,7 +19,6 @@ public class KafkaProducer {
   }
 
   public void send(String topic, String payload) {
-    try {
       if (random.nextInt(100) < 10) {
         throw new RuntimeException();
       }
@@ -28,8 +27,5 @@ public class KafkaProducer {
       if (random.nextInt(100) < 2) {
         throw new RuntimeException();
       }
-    } catch (RuntimeException e) {
-      send(topic, payload);
-    }
   }
 }

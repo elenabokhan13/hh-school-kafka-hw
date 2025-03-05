@@ -70,7 +70,6 @@ class KafkaTest {
 
   @Test
   public void testExactlyOnce() throws Exception {
-
       Set<String> messages = IntStream.range(1, 101)
           .mapToObj(i -> UUID.randomUUID().toString())
           .collect(Collectors.toSet());
